@@ -1,0 +1,300 @@
+.TH OUT "1" "2012-08-22" "User Commands"
+.\"
+.ds ]O out
+.SH NAME
+\*(]O \- manual page for out
+.\"
+\" Macros
+.de Vb \" Begin verbatim text
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve \" End verbatim text
+.ft R
+.fi
+..
+.\"
+.SH SYNOPSIS
+.B \*(]O
+[\fIOPTION\fR]... [\fISTRING\fR]...
+.\"
+.SH DESCRIPTION
+Echo strings to specified output stream(s).
+.\"
+.SH OPTIONS
+.TP
+.\"
+\fB\-a\fR, \fB\-\-intra\-char=\fR<char>
+Insert specified character between all
+output characters.
+.\"
+.TP
+\fB\-b\fR, \fB\-\-intra\-pause=\fR<delay>
+Pause between writing each character.
+.\"
+.TP
+\fB\-e\fR, \fB\-\-stderr\fR
+Write subsequent strings to standard error
+(file descriptor 2).
+.\"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+This help text.
+.\"
+.TP
+\fB\-l\fR, \fB\-\-literal\fR
+Write literal strings only
+(disable escape characters)
+.\"
+.TP
+\fB\-o\fR, \fB\-\-stdout\fR
+Write subsequent strings to standard output
+(file descriptor 1).
+.\"
+.TP
+\fB\-p\fR, \fB\-\-prefix=\fR<prefix>
+Use <prefix> as escape prefix (default='\e')
+.\"
+.TP
+\fB\-r\fR, \fB\-repreat=\fR<repeat>
+Repeat previous value <repeat> times.
+.\"
+.TP
+\fB\-s\fR, \fB\-\-sleep=\fR<delay>
+Sleep for <delay> amount of time.
+.\"
+.TP
+\fB\-t\fR, \fB\-\-terminal\fR
+Write subsequent strings directly to terminal.
+.HP
+\fB\-u\fR, \fB\-\-file\-descriptor=\fR<fd>
+Write to specified file descriptor.
+.\"
+.TP
+\fB\-x\fR, \fB\-\-exit=\fR<num>
+Exit with value <num>.
+.PP
+.\"
+.SH ESCAPE CHARACTERS
+.\"
+.B \*(]O
+recognises C-style escape sequences as used by
+.BR printf (1) " " .
+By default an escape sequence is introduced by the backslash character
+(\(aq\e\(aq), however this may be changed with the
+.B -p
+option.
+.B \*(]O
+also supports some additional sequences:
+.\"
+.TP
+\ea
+\- alert (bell)
+.TP
+\eb
+\- backspace
+.TP
+\ec
+\- no further output
+.TP
+\ee
+\- escape character (used for changing terminal attributes)
+.TP
+\ef
+\- form feed
+.TP
+\eg
+\- generate pseudo\-random printable character
+.TP
+\en
+\- newline
+.TP
+\eoNNN
+\- byte with octal value NNN (1 to 3 digits)
+.TP
+\er
+\- carriage return
+.TP
+\et
+\- horizontal tab
+.TP
+\euNNNN
+\- 2 byte Unicode (ISO/IEC 10646) character with hex value NNNN (4 digits)
+.TP
+\eUNNNNNNNN
+\- 4 byte Unicode (ISO/IEC 10646) character with hex value NNNNNNNN (8 digits)
+.TP
+\ev
+\- vertical tab
+.TP
+\exNN
+\- byte with hexadecimal value NN (1 to 2 digits)
+.PP
+.\"
+.SH RANGE ESCAPES
+.B \*(]O
+also supports range escapes which allow a range of characters to be
+specified in a compact format.
+.\"
+.TP
+\e{N..N}
+\- specify a range by two 1-byte literal characters.
+.\"
+.TP
+\e{oNNN..oNNN}
+\- specify a range by two 3-byte octal values.
+.\"
+.TP
+\e{uNNNN..uNNNN}
+\- specify a range by two 2-byte Unicode values.
+.\"
+.TP
+\e{UNNNNNNNN..UNNNNNNNN}
+\- specify a range by two 4-byte Unicode values.
+.\"
+.TP
+\e{xNN..xNN}
+\- specify a range by two 2-byte hex values.
+.PP
+Note that ranges take two values of the same type and the maximum width
+for that type must be specified.
+.PP
+.\"
+.SH NOTES
+.IP \(bu 4
+Arguments are processed in order.
+.IP \(bu
+With the exception of '\-x', arguments may be repeated any number of times.
+.IP \(bu
+All output will be sent to standard output until an output
+redirection option is specified that changes the output stream
+(namely \fB\-e\fR or \fB\-t\fR (or their long-option equivalents),
+or if output has already been redirected \fB\-o\fR (or its long-option
+equivalent)).
+.IP \(bu
+If <str> is "" or \(aq\(aq, a nul byte will be displayed.
+.IP \(bu
+If <repeat> is '\-1', repeat forever.
+.IP \(bu
+Replace the 'Z' in the range formats above with the appropriate characters.
+.IP \(bu
+Ranges can be either ascending or descending.
+.IP \(bu
+<delay> can take the following forms where <num> is a positive integer:
+.sp 1
+.RS
+.nf
+<num>ns : nano\-seconds (1/1,000,000,000 second)
+<num>us : micro\-seconds (1/1,000,000 second)
+<num>ms : milli\-seconds (1/1,000 second)
+<num>cs : centi\-seconds (1/100 second)
+<num>ds : deci\-seconds (1/10 second)
+<num>s  : seconds
+<num>m  : minutes
+<num>h  : hours
+<num>h  : days
+<num>   : seconds
+.sp 1
+If <num> is \fB\-1\fR, wait until any signal is received.
+If signal is \fBSIGNUM\fR continue, else exit immediately.
+.fi
+.RE
+.IP
+.IP \(bu
+Generated printable random characters will not display
+unless you are using an appropriate font.
+.\"
+.SH EXAMPLES
+.Vb
+\& # Print "foofoofoo" to stderr, followed by "barbar" to stdout.
+\& out "foo" \fB\-r\fR 2 \fB\-o\fR "bar" \fB\-r\fR 1
+\& 
+\& # Write 50 nul bytes direct to the terminal.
+\& out \fB\-t\fR "" \fB\-r\fR 49
+\& 
+\& # Write continuous stream of nul bytes direct to the terminal,
+\& # 1 per second.
+\& out \fB\-b\fR 1s \fB\-t\fR '' \fB\-r\fR \fB\-1\fR
+\& 
+\& # Display a greeting slowly (as a human might type)
+\& out \fB\-b\fR 20cs "Hello, $USER.\en"
+\& 
+\& # Display a "spinner" that loops 4 times.
+\& out \fB\-b\fR 20cs \fB\-p\fR % "%r|%r/%r\-%r\e%r" \fB\-r\fR 3
+\& 
+\& # Display all digits between zero and nine with a trailing
+\& # newline.
+\& out "\e{0..9}\en"
+\& 
+\& # Display slowly the lower\-case letters of the alphabet,
+\& # backwards without a newline.
+\& out \fB\-b\fR 1ds "\e{z..a}"
+\& 
+\& # Display upper\-case 'ABC' with newline.
+\& out '\eu0041\eu0042\eu0043\en'
+\& 
+\& # Display 'foo' with newline.
+\& out '\eo146\eu006f\ex6F\en'
+\& 
+\& # Clear the screen.
+\& out '\en' \fB\-r\fR $LINES
+\& 
+\& # Display upper\-case letters of the alphabet using octal
+\& # notation, plus a newline.
+\& out "\e{\eo101..\eo132}"
+\& 
+\& # Display 'h.e.l.l.o.' followed by a newline.
+\& out \fB\-a\fR . "hello" \fB\-a\fR '' "\en"
+\& 
+\& # Display upper\-case and lower\-case letters of the alphabet
+\& # including the characters in\-between, with a trailing newline.
+\& out "\e{A..z}\en"
+\& 
+\& # Display lower\-case alphabet followed by reversed lower\-case alphabet
+\& # with the digits zero to nine, then nine to zero on the next line.
+\& out "\e{a..z}\e{z..a}\en\e{0..9}\e{9..0}\en"
+\& 
+\& # Display lower\-case Greek letters of the alphabet.
+\& out "\e{α..ω}"
+\& 
+\& # Display cyrillic characters.
+\& out "\e{Ѐ..ӿ}"
+\& 
+\& # Display all printable ASCII characters using hex range:
+\& out "\e{\ex21..\ex7e}"
+\& 
+\& # Display all printable ASCII characters using 2-byte UTF-8 range:
+\& out "\e{\eu0021..\eu007e}"
+\& 
+\& # Display all printable ASCII characters using 4-byte UTF-8 range:
+\& out "\e{\e\U00000021..\eU0000007e}"
+\& 
+\& # Display all braille characters.
+\& out "\e{\eu2800..\eu28FF}"
+\& 
+\& # Display 'WARNING' in white on red background.
+\& out '\ee[37;41mWARNING\ee[0m\en'
+\& 
+\& # Generate 10 random characters.
+\& out '\eg' \fB\-r\fR 9
+\& 
+.Ve
+.\"
+.SH AUTHOR
+Written by James Hunt
+.RB < james.hunt@ubuntu.com >
+.\"
+.SH COPYRIGHT
+Copyright \(co 2012 James Hunt
+.RB < james.hunt@ubuntu.com >
+.\"
+.SH LICENSE
+GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.\"
+.SH SEE ALSO
+.BR echo (1)
+.BR printf (1)

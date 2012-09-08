@@ -1,0 +1,45 @@
+#---------------------------------------------------------------------
+# TODO: ideas for improvements / new features
+#---------------------------------------------------------------------
+
+- Ability to restrict random char output to a specified range.
+
+  Range could be identified by POSIX-style character classes such as:
+
+  [:ascii:], [:alnum:], [:print:], etc.
+
+  Possible syntax (which is admittedly pretty hideous):
+
+        # generate a printable ASCII character
+	'\g{[:ascii:],[:print:]}'
+
+        # generate a printable non-ASCII numeric character (if such a
+        # thing exists ? ;-)
+	'\g{[[:print:]],[^[:ascii:]],[[:digit:]]}'
+
+- Ability to specify sleep and delay times in floating point format:
+
+  Syntax:
+
+  	-s <float>
+  	-d <float>
+
+  Example:
+
+	-s 0.2s # sleep for 0.2 seconds
+
+- Ability to specify random delay with a range
+
+  Possible syntax:
+
+	-d '\r{from..to}'
+	-s '\r{from..to}'
+
+  Example:
+
+	-s '\r{1s..2days}'
+
+- Rewrite using Flex+Bison as generate_chars() in particular is an
+  abomination.
+
+#---------------------------------------------------------------------
