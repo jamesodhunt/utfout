@@ -89,6 +89,10 @@ option.
 also supports some additional sequences:
 .\"
 .TP
+\e0
+\- nul byte (hex value 0x00)
+.\"
+.TP
 \ea
 \- alert (bell)
 .TP
@@ -173,7 +177,8 @@ redirection option is specified that changes the output stream
 or if output has already been redirected \fB\-o\fR (or its long-option
 equivalent)).
 .IP \(bu
-If <str> is "" or \(aq\(aq, a nul byte will be displayed.
+If <str> is the empty string ("" or \(aq\(aq) it will be treated as \e0
+such that a nul byte will be displayed.
 .IP \(bu
 If <repeat> is '\-1', repeat forever.
 .IP \(bu
@@ -202,7 +207,7 @@ If signal is \fBSIGNUM\fR continue, else exit immediately.
 .RE
 .IP
 .IP \(bu
-Generated printable random characters will not display
+Generated printable random characters may not display
 unless you are using an appropriate font.
 .\"
 .SH EXAMPLES
