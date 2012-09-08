@@ -25,12 +25,12 @@ Echo strings to specified output stream(s).
 .SH OPTIONS
 .TP
 .\"
-\fB\-a\fR, \fB\-\-intra\-char=\fR<char>
+\fB\-a\fR, \fB\-\-intra\-char=\fR\<char\>
 Insert specified character between all
 output characters.
 .\"
 .TP
-\fB\-b\fR, \fB\-\-intra\-pause=\fR<delay>
+\fB\-b\fR, \fB\-\-intra\-pause=\fR\<delay\>
 Pause between writing each character.
 .\"
 .TP
@@ -53,27 +53,27 @@ Write subsequent strings to standard output
 (file descriptor 1).
 .\"
 .TP
-\fB\-p\fR, \fB\-\-prefix=\fR<prefix>
-Use <prefix> as escape prefix (default='\e')
+\fB\-p\fR, \fB\-\-prefix=\fR\<prefix\>
+Use \<prefix\> as escape prefix (default='\e')
 .\"
 .TP
-\fB\-r\fR, \fB\-repreat=\fR<repeat>
-Repeat previous value <repeat> times.
+\fB\-r\fR, \fB\-repreat=\fR\<repeat\>
+Repeat previous value \<repeat\> times.
 .\"
 .TP
-\fB\-s\fR, \fB\-\-sleep=\fR<delay>
-Sleep for <delay> amount of time.
+\fB\-s\fR, \fB\-\-sleep=\fR\<delay\>
+Sleep for \<delay\> amount of time.
 .\"
 .TP
 \fB\-t\fR, \fB\-\-terminal\fR
 Write subsequent strings directly to terminal.
 .HP
-\fB\-u\fR, \fB\-\-file\-descriptor=\fR<fd>
+\fB\-u\fR, \fB\-\-file\-descriptor=\fR\<fd\>
 Write to specified file descriptor.
 .\"
 .TP
-\fB\-x\fR, \fB\-\-exit=\fR<num>
-Exit with value <num>.
+\fB\-x\fR, \fB\-\-exit=\fR\<num\>
+Exit with value \<num\>.
 .PP
 .\"
 .SH ESCAPE CHARACTERS
@@ -177,31 +177,31 @@ redirection option is specified that changes the output stream
 or if output has already been redirected \fB\-o\fR (or its long-option
 equivalent)).
 .IP \(bu
-If <str> is the empty string ("" or \(aq\(aq) it will be treated as \e0
+If \<str\> is the empty string ("" or \(aq\(aq) it will be treated as \e0
 such that a nul byte will be displayed.
 .IP \(bu
-If <repeat> is '\-1', repeat forever.
+If \<repeat\> is '\-1', repeat forever.
 .IP \(bu
 Replace the 'Z' in the range formats above with the appropriate characters.
 .IP \(bu
 Ranges can be either ascending or descending.
 .IP \(bu
-<delay> can take the following forms where <num> is a positive integer:
+\<delay\> can take the following forms where \<num\> is a positive integer:
 .sp 1
 .RS
 .nf
-<num>ns : nano\-seconds (1/1,000,000,000 second)
-<num>us : micro\-seconds (1/1,000,000 second)
-<num>ms : milli\-seconds (1/1,000 second)
-<num>cs : centi\-seconds (1/100 second)
-<num>ds : deci\-seconds (1/10 second)
-<num>s  : seconds
-<num>m  : minutes
-<num>h  : hours
-<num>h  : days
-<num>   : seconds
+\<num\>ns : nano\-seconds (1/1,000,000,000 second)
+\<num\>us : micro\-seconds (1/1,000,000 second)
+\<num\>ms : milli\-seconds (1/1,000 second)
+\<num\>cs : centi\-seconds (1/100 second)
+\<num\>ds : deci\-seconds (1/10 second)
+\<num\>s  : seconds
+\<num\>m  : minutes
+\<num\>h  : hours
+\<num\>h  : days
+\<num\>   : seconds
 .sp 1
-If <num> is \fB\-1\fR, wait until any signal is received.
+If \<num\> is \fB\-1\fR, wait until any signal is received.
 If signal is \fBSIGNUM\fR continue, else exit immediately.
 .fi
 .RE
