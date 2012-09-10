@@ -26,8 +26,8 @@ Echo strings to specified output stream(s).
 .TP
 .\"
 \fB\-a\fR, \fB\-\-intra\-char=\fR\<char\>
-Insert specified character between all
-output characters.
+Insert specified character (which may be a 1\-character
+escape character) between all output characters.
 .\"
 .TP
 \fB\-b\fR, \fB\-\-intra\-pause=\fR\<delay\>
@@ -43,9 +43,13 @@ Write subsequent strings to standard error
 This help text.
 .\"
 .TP
+\fB\-i\fR, \fB\-\-interpret\fR
+Interpret escape characters (default).
+.\"
+.TP
 \fB\-l\fR, \fB\-\-literal\fR
 Write literal strings only
-(disable escape characters)
+(disable escape characters).
 .\"
 .TP
 \fB\-o\fR, \fB\-\-stdout\fR
@@ -54,10 +58,10 @@ Write subsequent strings to standard output
 .\"
 .TP
 \fB\-p\fR, \fB\-\-prefix=\fR\<prefix\>
-Use \<prefix\> as escape prefix (default='\e')
+Use \<prefix\> as escape prefix (default='\e').
 .\"
 .TP
-\fB\-r\fR, \fB\-repreat=\fR\<repeat\>
+\fB\-r\fR, \fB\-\-repeat=\fR\<repeat\>
 Repeat previous value \<repeat\> times.
 .\"
 .TP
@@ -180,6 +184,9 @@ equivalent)).
 If \<str\> is the empty string ("" or \(aq\(aq) it will be treated as \e0
 such that a nul byte will be displayed.
 .IP \(bu
+To cancel the effect of \fB-a\fR, specify a null string: \fB-a
+\(aq\(aq\fR.
+.IP \(bu
 If \<repeat\> is '\-1', repeat forever.
 .IP \(bu
 Replace the 'Z' in the range formats above with the appropriate characters.
@@ -244,6 +251,9 @@ unless you are using an appropriate font.
 \& 
 \& # Clear the screen.
 \& out '\en' \fB\-r\fR $LINES
+\& 
+\& # Write hello to stdout, stderr and the terminal.
+\& out 'hello' \fB\-t\fR \fB\-r\fR 1 -e \fB\-r\fR 1
 \& 
 \& # Display upper\-case letters of the alphabet using octal
 \& # notation, plus a newline.

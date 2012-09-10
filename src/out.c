@@ -300,6 +300,7 @@ usage (void)
             "  -e, --stderr               : Write subsequent strings to standard error\n"
             "                               (file descriptor %d).\n"
             "  -h, --help                 : This help text.\n"
+            "  -i, --interpret            : Interpret escape characters.\n"
             "  -l, --literal              : Write literal strings only\n"
             "                               (disable escape characters)\n"
             "  -o, --stdout               : Write subsequent strings to standard output\n"
@@ -1251,6 +1252,7 @@ main (int argc, char *argv[])
         {"exit"            , required_argument , 0, 'x'},
         {"file-descriptor" , required_argument , 0, 'u'},
         {"help"            , no_argument       , 0, 'h'},
+        {"interpret"       , required_argument , 0, 'i'},
         {"intra-char"      , required_argument , 0, 'a'},
         {"intra-pause"     , required_argument , 0, 'b'},
         {"literal"         , no_argument       , 0, 'l'},
@@ -1267,7 +1269,7 @@ main (int argc, char *argv[])
     };
 
     while ((option = getopt_long (argc, argv,
-                    "-a:b:ehlop:r:s:tu:U:x:",
+                    "-a:b:ehilop:r:s:tu:U:x:",
                     long_options, &long_index)) != -1) {
         switch (option)
         {
@@ -1292,7 +1294,13 @@ main (int argc, char *argv[])
 
                         separator = (tmp == -1 ? *optarg : tmp);
                     } else {
-                        separator = *optarg;
+                        if (! *optarg)
+                            /* user specified "-a ''" to cancel
+                             * separator.
+                             */
+                            separator_specified = 0;
+                        else
+                            separator = *optarg;
                     }
                 }
                 break;
@@ -1308,6 +1316,10 @@ main (int argc, char *argv[])
             case 'h':
                 usage ();
                 exit (EXIT_SUCCESS);
+
+            case 'i':
+                disable_escapes = 0;
+                break;
 
             case 'l':
                 disable_escapes = 1;
