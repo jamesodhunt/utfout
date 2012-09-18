@@ -1,10 +1,8 @@
 .TH OUT "1" "2012-09-10" "User Commands"
 .\"
-.ds ]O out
 .SH NAME
-\*(]O \- manual page for out
-.\"
-\" Macros
+out \- utility for producing UTf-8 output to standard streams and terminal.
+.\" Macros
 .de Vb \" Begin verbatim text
 .ft CW
 .nf
@@ -16,7 +14,7 @@
 ..
 .\"
 .SH SYNOPSIS
-.B \*(]O
+.B out
 [\fIOPTION\fR]... [\fISTRING\fR]...
 .\"
 .SH DESCRIPTION
@@ -82,14 +80,14 @@ Exit with value \<num\>.
 .\"
 .SH ESCAPE CHARACTERS
 .\"
-.B \*(]O
+.B out
 recognises C-style escape sequences as used by
 .BR printf (1) " " .
 By default an escape sequence is introduced by the backslash character
 (\(aq\e\(aq), however this may be changed with the
 .B -p
 option.
-.B \*(]O
+.B out
 also supports some additional sequences:
 .\"
 .TP
@@ -141,7 +139,7 @@ also supports some additional sequences:
 .PP
 .\"
 .SH RANGE ESCAPES
-.B \*(]O
+.B out
 also supports range escapes which allow a range of characters to be
 specified in a compact format.
 .\"
