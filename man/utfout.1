@@ -1,7 +1,7 @@
-.TH OUT "1" "2012-09-10" "User Commands"
+.TH UTFOUT "1" "2012-09-10" "User Commands"
 .\"
 .SH NAME
-out \- utility for producing UTf-8 output to standard streams and terminal.
+utfout \- utility for producing UTF-8 output to standard streams and terminal.
 .\" Macros
 .de Vb \" Begin verbatim text
 .ft CW
@@ -14,7 +14,7 @@ out \- utility for producing UTf-8 output to standard streams and terminal.
 ..
 .\"
 .SH SYNOPSIS
-.B out
+.B utfout
 [\fIOPTION\fR]... [\fISTRING\fR]...
 .\"
 .SH DESCRIPTION
@@ -80,14 +80,14 @@ Exit with value \<num\>.
 .\"
 .SH ESCAPE CHARACTERS
 .\"
-.B out
+.B utfout
 recognises C-style escape sequences as used by
 .BR printf (1) " " .
 By default an escape sequence is introduced by the backslash character
 (\(aq\e\(aq), however this may be changed with the
 .B -p
 option.
-.B out
+.B utfout
 also supports some additional sequences:
 .\"
 .TP
@@ -139,7 +139,7 @@ also supports some additional sequences:
 .PP
 .\"
 .SH RANGE ESCAPES
-.B out
+.B utfout
 also supports range escapes which allow a range of characters to be
 specified in a compact format.
 .\"
@@ -218,79 +218,79 @@ unless you are using an appropriate font.
 .SH EXAMPLES
 .Vb
 \& # Print "foofoofoo" to stderr, followed by "barbar" to stdout.
-\& out "foo" \fB\-r\fR 2 \fB\-o\fR "bar" \fB\-r\fR 1
+\& utfout "foo" \fB\-r\fR 2 \fB\-o\fR "bar" \fB\-r\fR 1
 \& 
 \& # Write 50 nul bytes direct to the terminal.
-\& out \fB\-t\fR "" \fB\-r\fR 49
+\& utfout \fB\-t\fR "" \fB\-r\fR 49
 \& 
 \& # Write continuous stream of nul bytes direct to the terminal,
 \& # 1 per second.
-\& out \fB\-b\fR 1s \fB\-t\fR '' \fB\-r\fR \fB\-1\fR
+\& utfout \fB\-b\fR 1s \fB\-t\fR '' \fB\-r\fR \fB\-1\fR
 \& 
 \& # Display a greeting slowly (as a human might type)
-\& out \fB\-b\fR 20cs "Hello, $USER.\en"
+\& utfout \fB\-b\fR 20cs "Hello, $USER.\en"
 \& 
 \& # Display a "spinner" that loops 4 times.
-\& out \fB\-b\fR 20cs \fB\-p\fR % "%r|%r/%r\-%r\e%r" \fB\-r\fR 3
+\& utfout \fB\-b\fR 20cs \fB\-p\fR % "%r|%r/%r\-%r\e%r" \fB\-r\fR 3
 \& 
 \& # Display all digits between zero and nine with a trailing
 \& # newline.
-\& out "\e{0..9}\en"
+\& utfout "\e{0..9}\en"
 \& 
 \& # Display slowly the lower\-case letters of the alphabet,
 \& # backwards without a newline.
-\& out \fB\-b\fR 1ds "\e{z..a}"
+\& utfout \fB\-b\fR 1ds "\e{z..a}"
 \& 
 \& # Display upper\-case 'ABC' with newline.
-\& out '\eu0041\eu0042\eu0043\en'
+\& utfout '\eu0041\eu0042\eu0043\en'
 \& 
 \& # Display 'foo' with newline.
-\& out '\eo146\eu006f\ex6F\en'
+\& utfout '\eo146\eu006f\ex6F\en'
 \& 
 \& # Clear the screen.
-\& out '\en' \fB\-r\fR $LINES
+\& utfout '\en' \fB\-r\fR $LINES
 \& 
 \& # Write hello to stdout, stderr and the terminal.
-\& out 'hello' \fB\-t\fR \fB\-r\fR 1 -e \fB\-r\fR 1
+\& utfout 'hello' \fB\-t\fR \fB\-r\fR 1 -e \fB\-r\fR 1
 \& 
 \& # Display upper\-case letters of the alphabet using octal
 \& # notation, plus a newline.
-\& out "\e{\eo101..\eo132}"
+\& utfout "\e{\eo101..\eo132}"
 \& 
 \& # Display 'h.e.l.l.o.' followed by a newline.
-\& out \fB\-a\fR . "hello" \fB\-a\fR '' "\en"
+\& utfout \fB\-a\fR . "hello" \fB\-a\fR '' "\en"
 \& 
 \& # Display upper\-case and lower\-case letters of the alphabet
 \& # including the characters in\-between, with a trailing newline.
-\& out "\e{A..z}\en"
+\& utfout "\e{A..z}\en"
 \& 
 \& # Display lower\-case alphabet followed by reversed lower\-case alphabet
 \& # with the digits zero to nine, then nine to zero on the next line.
-\& out "\e{a..z}\e{z..a}\en\e{0..9}\e{9..0}\en"
+\& utfout "\e{a..z}\e{z..a}\en\e{0..9}\e{9..0}\en"
 \& 
 \& # Display lower\-case Greek letters of the alphabet.
-\& out "\e{α..ω}"
+\& utfout "\e{α..ω}"
 \& 
 \& # Display cyrillic characters.
-\& out "\e{Ѐ..ӿ}"
+\& utfout "\e{Ѐ..ӿ}"
 \& 
 \& # Display all printable ASCII characters using hex range:
-\& out "\e{\ex21..\ex7e}"
+\& utfout "\e{\ex21..\ex7e}"
 \& 
 \& # Display all printable ASCII characters using 2-byte UTF-8 range:
-\& out "\e{\eu0021..\eu007e}"
+\& utfout "\e{\eu0021..\eu007e}"
 \& 
 \& # Display all printable ASCII characters using 4-byte UTF-8 range:
-\& out "\e{\e\U00000021..\eU0000007e}"
+\& utfout "\e{\e\U00000021..\eU0000007e}"
 \& 
 \& # Display all braille characters.
-\& out "\e{\eu2800..\eu28FF}"
+\& utfout "\e{\eu2800..\eu28FF}"
 \& 
 \& # Display 'WARNING' in white on red background.
-\& out '\ee[37;41mWARNING\ee[0m\en'
+\& utfout '\ee[37;41mWARNING\ee[0m\en'
 \& 
 \& # Generate 10 random characters.
-\& out '\eg' \fB\-r\fR 9
+\& utfout '\eg' \fB\-r\fR 9
 \& 
 .Ve
 .\"
