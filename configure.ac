@@ -2,10 +2,10 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([out], [0.0.1], [james.hunt@ubuntu.com])
+AC_INIT([utfout], [0.0.1], [james.hunt@ubuntu.com])
 AC_COPYRIGHT([Copyright (C) 2012 James Hunt <james.hunt@ubuntu.com>])
 
-AC_CONFIG_SRCDIR([src/out.c])
+AC_CONFIG_SRCDIR([src/utfout.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([config])
 

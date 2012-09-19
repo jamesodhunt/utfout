@@ -1,3 +1,3 @@
-bin_PROGRAMS = out
-out_SOURCES = out.c
-out_LDFLAGS = $(LTLIBINTL)
+bin_PROGRAMS = utfout
+utfout_SOURCES = utfout.c
+utfout_LDFLAGS = $(LTLIBINTL)
