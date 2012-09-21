@@ -1,0 +1,20 @@
+Source: utfout
+Section: utils
+Priority: optional
+Maintainer: James Hunt <james.hunt@ubuntu.com>
+Build-Depends: debhelper (>= 9.0.0), gettext, dh-autoreconf
+Standards-Version: 3.9.3
+Homepage: https://code.launchpad.net/utfout
+
+Package: utfout
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Utility to produce UTF-8 (Unicode) output
+ This package contains a command-line tool that can produce UTF-8
+ (Unicode) strings in various ways and direct them to standard output,
+ standard error or direct to the terminal without the need for shell
+ support. Strings can be repeated, delayed, randomly-generated,
+ written to arbitrary file descriptors, interspersed with other
+ characters and generated using ranges. Printf(1)-style escape
+ sequences are supported along with extended escape sequences.
+ utfout(1) Sits somewhere between echo(1) and printf(1).
