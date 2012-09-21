@@ -1411,9 +1411,18 @@ get_random_char (void)
         seeded = 1;
     }
 
-    do {
+    while (1) {
         wc = (wchar_t)rand ();
-    } while (! iswctype (wc, wctype ("print")));
 
-    return wc;
+        /* If the random character is not printable, bit-shift in the
+         * home that the result might be.
+         *
+         * This significantly speeds up this function.
+         */
+        while (wc) {
+            if (iswctype (wc, wctype ("print")))
+                return wc;
+            wc >>= 1;
+        }
+    }
 }

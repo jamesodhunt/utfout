@@ -1,3 +1,7 @@
+2012-09-21  James Hunt  <james.hunt@ubuntu.com>
+
+	* src/utfout.c: Significantly improved speed of random char generation.
+
 2012-09-19  James Hunt  <james.hunt@ubuntu.com>
 
 	* Renamed from 'out' to 'utfout'.
