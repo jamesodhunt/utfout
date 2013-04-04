@@ -1,3 +1,7 @@
+2013-04-04  James Hunt  <james.hunt@ubuntu.com>
+
+	* src/utfout.c: Fixed issues identified by Coverity.
+
 2012-09-21  James Hunt  <james.hunt@ubuntu.com>
 
 	* src/utfout.c: Significantly improved speed of random char generation.

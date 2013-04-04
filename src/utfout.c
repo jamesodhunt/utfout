@@ -200,8 +200,9 @@ die (const char *fmt, ...)
     assert (buffer[len-1] == '\0');
 
     /* convert MBS to wide-character string */
+    errno = 0;
     wlen = mbsnrtowcs (wbuffer, (const char **)&p, len, len, NULL);
-    if (wlen < 0)
+    if (wlen == (size_t)-1 && errno == EILSEQ)
         goto error;
 
     ret = fputws (wbuffer, stderr);
@@ -305,7 +306,7 @@ usage (void)
             "                               (disable escape characters)\n"
             "  -o, --stdout               : Write subsequent strings to standard output\n"
             "                               (file descriptor %d).\n"
-            "  -p, --prefix=<prefix>      : Use <prefix> as escape prefix (default='%c')\n"
+            "  -p, --prefix=<prefix>      : Use <prefix> as escape prefix (default='%lc')\n"
             "  -r, --repeat=<repeat>      : Repeat previous value <repeat> times.\n"
             "  -s, --sleep=<delay>        : Sleep for <delay> amount of time.\n"
             "  -t, --terminal             : Write subsequent strings directly to terminal.\n"
@@ -315,7 +316,7 @@ usage (void)
         PACKAGE_NAME,
         STDERR_FILENO,
         STDOUT_FILENO,
-        escape_prefix);
+        (wint_t)escape_prefix);
 
     printf (
             "Escape Characters:\n"
