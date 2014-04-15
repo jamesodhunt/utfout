@@ -1,3 +1,7 @@
+2014-04-15  James Hunt  <james.hunt@ubuntu.com>
+
+	* src/utfout.c: usage(): Typo.
+
 2013-04-04  James Hunt  <james.hunt@ubuntu.com>
 
 	* src/utfout.c: Fixed issues identified by Coverity.

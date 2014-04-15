@@ -368,7 +368,7 @@ usage (void)
             "      <num>s  : seconds\n"
             "      <num>m  : minutes\n"
             "      <num>h  : hours\n"
-            "      <num>h  : days\n"
+            "      <num>d  : days\n"
             "      <num>   : seconds\n"
             "\n"
             "    If <num> is -1, wait until any signal is received.\n"
