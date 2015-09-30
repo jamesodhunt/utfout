@@ -98,6 +98,11 @@ Here are some interesting examples of usage::
   # Generate 10 random characters.
   utfout '\g' -r 9
 
+References
+----------
+
+See http://ifdeflinux.blogspot.co.uk/2012/09/out-output-utility.html
+
 Author
 ------
 
