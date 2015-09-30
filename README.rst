@@ -2,6 +2,9 @@
 utfout
 ======
 
+.. contents::
+.. sectnum::
+
 Overview
 --------
 
