@@ -9,7 +9,7 @@
  *
  * Date: 18 January 2012
  *
- * Author: James Hunt <james.hunt@ubuntu.com>
+ * Author: James Hunt <jamesodhunt@ubuntu.com>
  *
  * Bugs: This code is messy (*), partly since we're not using
  *       flex+bison due to the inherant difficulties of handling
@@ -20,7 +20,7 @@
  * License: GPLv3. See below...
  *---------------------------------------------------------------------
  *
- * Copyright © 2012 James Hunt <james.hunt@ubuntu.com>
+ * Copyright © 2012-2015 James Hunt <jamesodhunt@ubuntu.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@
     "GPL-3.0+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n" \
 "This is free software: you are free to change and redistribute it.\n" \
 "There is NO WARRANTY, to the extent permitted by law.\n"
-#define PROGRAM_AUTHORS   "James Hunt <james.hunt@ubuntu.com>"
+#define PROGRAM_AUTHORS   "James Hunt <jamesodhunt@ubuntu.com>"
 
 /* default prefix */
 wchar_t            escape_prefix = L'\\';
