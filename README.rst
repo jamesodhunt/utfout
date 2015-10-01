@@ -98,6 +98,48 @@ Here are some interesting examples of usage::
   # Generate 10 random characters.
   utfout '\g' -r 9
 
+Extended Example
+----------------
+
+It's not exactly curses, but here's a simple routine to draw a square::
+
+  $ cat >square.sh<<EOT
+  #!/bin/sh
+  
+  square()
+  {
+      height="$1"
+      width="$2"
+      char="$3"
+  
+      r=$((width - 1))
+      utfout "$char" -r $r '\n'
+  
+      for i in $(seq $((height - 2)))
+      do
+          utfout "$char" ' ' -r $((r - 2)) "$char\n"
+      done
+  
+      utfout "$char" -r $r '\n'
+  }
+  
+  [ $# -ne 3 ] && echo "ERROR: need height, width, and a character"
+  square "$1" "$2" "$3"
+  EOT
+  $ chmod 755 square.sh
+  $ ./square.sh 10 20 ☻
+  ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻                  ☻
+  ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻
+  $
+
 References
 ----------
 
