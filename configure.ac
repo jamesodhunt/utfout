@@ -14,7 +14,7 @@ AC_CONFIG_AUX_DIR([config])
 
 AC_SUBST(UTFOUT_VERSION, utfout_version)
 
-AM_GNU_GETTEXT_VERSION([0.19.2])
+AM_GNU_GETTEXT_VERSION([0.18.1])
 AM_GNU_GETTEXT([external])
 
 # Checks for programs.
