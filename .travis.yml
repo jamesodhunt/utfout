@@ -1,0 +1,9 @@
+language: c
+compiler:
+  - gcc
+  - clang
+script: ./reconf && ./configure && make -j4
+notifications:
+  email:
+    recipients:
+      - jamesodhunt@ubuntu.com
