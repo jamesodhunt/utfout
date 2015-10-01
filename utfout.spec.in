@@ -1,0 +1,47 @@
+Name:           @PACKAGE@
+Version:        @UTFOUT_VERSION@
+Release:        1%{?dist}
+Summary:        Utility to produce UTF-8 (Unicode) output
+
+Group:          Applications/System
+License:        GPLv3+
+URL:            https://github.com/jamesodhunt/utfout
+Source0:        https://github.com/jamesodhunt/utfout/archive/0.0.2.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+%description
+This package contains a command-line tool that can produce UTF-8
+(Unicode) strings in various ways and direct them to standard output,
+standard error or direct to the terminal without the need for shell
+support. Strings can be repeated, delayed, randomly-generated,
+written to arbitrary file descriptors, interspersed with other
+characters and generated using ranges. Printf(1)-style escape
+sequences are supported along with extended escape sequences.
+utfout(1) Sits somewhere between echo(1) and printf(1).
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+
+%check
+%if 0%{?fedora}
+make check
+%endif
+
+%files
+%defattr(-,root,root,-)
+%{_bindir}/utfout
+%{_mandir}/man1/utfout.1.gz
+
+%doc NEWS ChangeLog TODO
+
+%changelog
+* Wed Sep 30 2015 James Hunt <jamesodhunt@ubuntu.com> - 0.0.2
+- Initial packaging

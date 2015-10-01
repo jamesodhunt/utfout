@@ -1,18 +1,24 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.68])
-AC_INIT([utfout], [0.0.1], [james.hunt@ubuntu.com])
-AC_COPYRIGHT([Copyright (C) 2012 James Hunt <james.hunt@ubuntu.com>])
+m4_define([utfout_version], 0.0.2)
 
+AC_PREREQ([2.68])
+AC_INIT([utfout], [utfout_version], [jamesodhunt@ubuntu.com])
+AC_COPYRIGHT([Copyright (C) 2012-2015 James Hunt <jamesodhunt@ubuntu.com>])
+
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/utfout.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([config])
 
+AC_SUBST(UTFOUT_VERSION, utfout_version)
+
+AM_GNU_GETTEXT_VERSION([0.19.2])
+AM_GNU_GETTEXT([external])
+
 # Checks for programs.
 AC_PROG_CC
-
-AM_GNU_GETTEXT([external])
 
 # Checks for libraries.
 
@@ -27,4 +33,8 @@ AC_TYPE_SIZE_T
 AC_CHECK_FUNCS([nl_langinfo setlocale strdup])
 
 AM_INIT_AUTOMAKE
-AC_OUTPUT(Makefile src/Makefile po/Makefile.in)
+AC_CONFIG_FILES([ Makefile
+                 src/Makefile
+                 po/Makefile.in
+                 utfout.spec ])
+AC_OUTPUT
