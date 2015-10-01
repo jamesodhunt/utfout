@@ -101,12 +101,12 @@ Here are some interesting examples of usage::
 Extended Example
 ----------------
 
-It's not exactly curses, but here's a simple routine to draw a square::
+It's not exactly curses, but here's a simple routine to draw a rectangle::
 
-  $ cat >square.sh<<EOT
+  $ cat >rectangle.sh<<EOT
   #!/bin/sh
   
-  square()
+  rectangle()
   {
       height="$1"
       width="$2"
@@ -124,10 +124,10 @@ It's not exactly curses, but here's a simple routine to draw a square::
   }
   
   [ $# -ne 3 ] && echo "ERROR: need height, width, and a character"
-  square "$1" "$2" "$3"
+  rectangle "$1" "$2" "$3"
   EOT
-  $ chmod 755 square.sh
-  $ ./square.sh 10 20 ☻
+  $ chmod 755 rectangle.sh
+  $ ./rectangle.sh 10 20 ☻
   ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻
   ☻                  ☻
   ☻                  ☻
