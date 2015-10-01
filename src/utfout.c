@@ -161,8 +161,8 @@ die (const char *fmt, ...)
 {
     char     tag[] = "ERROR";
     va_list  ap;
-    char     buffer[1024];
-    wchar_t  wbuffer[1024];
+    char     buffer[BUFSIZ];
+    wchar_t  wbuffer[BUFSIZ];
     char    *p;
     size_t   len;
     size_t   wlen;
