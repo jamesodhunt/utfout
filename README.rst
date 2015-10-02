@@ -1,9 +1,13 @@
+.. image:: https://travis-ci.org/jamesodhunt/utfout.svg?branch=master
+   :target: https://travis-ci.org/jamesodhunt/utfout
+
+.. image:: https://scan.coverity.com/projects/349/badge.svg
+   :target: https://scan.coverity.com/projects/utfout
+   :alt: Coverity Scan Build Status
+
 ======
 utfout
 ======
-
-.. image:: https://travis-ci.org/jamesodhunt/utfout.svg?branch=master
-   :target: https://travis-ci.org/jamesodhunt/utfout
 
 .. contents::
 .. sectnum::
