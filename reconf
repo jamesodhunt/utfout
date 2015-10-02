@@ -1,9 +1,0 @@
-#!/bin/sh
-
-rm -f config.cache
-aclocal -I m4 --install
-autoconf
-autoheader
-autopoint
-automake --add-missing
-exit
