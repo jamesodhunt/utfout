@@ -2,6 +2,9 @@
 utfout
 ======
 
+.. image:: https://travis-ci.org/jamesodhunt/utfout.svg?branch=master
+   :target: https://travis-ci.org/jamesodhunt/utfout
+
 .. contents::
 .. sectnum::
 
