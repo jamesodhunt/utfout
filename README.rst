@@ -5,6 +5,12 @@
    :target: https://scan.coverity.com/projects/utfout
    :alt: Coverity Scan Build Status
 
+.. image:: https://img.shields.io/badge/license-GPL-3.0.svg
+
+.. image:: https://img.shields.io/badge/donate-flattr-red.svg
+   :alt: Donate via flattr
+   :target: https://flattr.com/profile/jamesodhunt
+
 ======
 utfout
 ======
