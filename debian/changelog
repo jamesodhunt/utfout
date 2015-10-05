@@ -1,3 +1,9 @@
+utfout (0.0.1-2) UNRELEASED; urgency=medium
+
+  * debian/control: Update Homepage and Maintainer.
+
+ -- James Hunt <jamesodhunt@ubuntu.com>  Mon, 05 Oct 2015 18:33:52 +0100
+
 utfout (0.0.1-1) unstable; urgency=low
 
   * Initial release (Closes: #688046)

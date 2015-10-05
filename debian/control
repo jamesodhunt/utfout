@@ -1,10 +1,10 @@
 Source: utfout
 Section: utils
 Priority: optional
-Maintainer: James Hunt <james.hunt@ubuntu.com>
+Maintainer: James Hunt <jamesodhunt@ubuntu.com>
 Build-Depends: debhelper (>= 9.0.0), gettext, dh-autoreconf
 Standards-Version: 3.9.3
-Homepage: https://code.launchpad.net/utfout
+Homepage: https://github.com/jamesodhunt/utfout
 
 Package: utfout
 Architecture: any
