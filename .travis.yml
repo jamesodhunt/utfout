@@ -13,3 +13,18 @@ notifications:
   email:
     recipients:
       - jamesodhunt@ubuntu.com
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "JV38E4We+sm+eGCcqHBO56PVWh3rdXzpXu7T/5I5SseFu1nL0XlKQ31oft1DR0J5R79Qlm5+lTnbW7/3wA5pE+pu0awrqSAY+PeOOTOvaB5PaAd4A7ABF6Q3fio3ehkiqGBEI8zFnvHVQQqt7UzuGb1OwWEVfbpW5/EHJIA2CiyMa4YCr45DqB9dkuF+h8aa+Q/4Ci70RXBJHRMP9Lk3NshmHvbyqEl6v9c5ZLjI3wefFtga+PN6tJ35W+wVPWnyd+YGxDOJ7xiVeOtKh9SCgFgjN02QIJPSk6J8xN0rzcT+BF/uxAoOf41Ti643140oGKdPNwNziY2/NjiUBTJw3lUhGbs412A9DP8ohGh3jpfE7KE97tHxIpv2g7QJJP/Sj0n/3QKrUh5t4NZGuVwdd2Oz1+aoRMEFHSiSvG5j7yc61MNL/0sGK8NPqrpQMUObEhmSBL83qwoGM5rRA0S9DizM6LJArC5BRKj+PLXR55Ho+g8JLbidfEg+V7RmUWIL007aEFakzz4jzBUb/HI+3W5ppM1T5n/3MDVyEu6ryqRRuThxDTtmgzqwlLa/loAAMqqgZYPiOKJAzQ7PV2NZ6+QfH15H01IA568fakuP/jxi9s3V4HGPoQBcj3kDs5S5ysgj+N3ZITt0Hz2t6tCl3qBqlRYNbAbFEWJvBS4tBwE="
+
+addons:
+  coverity_scan:
+    project:
+      name: "jamesodhunt/utfout"
+      description: "Build submitted via Travis CI"
+    notification_email: jamesodhunt@gmail.com
+    build_command_prepend: "autoreconf -fi && ./configure; make clean"
+    build_command: "make -j 4"
+    branch_pattern: master
