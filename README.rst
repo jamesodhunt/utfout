@@ -1,8 +1,8 @@
 .. image:: https://travis-ci.org/jamesodhunt/utfout.svg?branch=master
    :target: https://travis-ci.org/jamesodhunt/utfout
 
-.. image:: https://scan.coverity.com/projects/349/badge.svg
-   :target: https://scan.coverity.com/projects/utfout
+.. image:: https://scan.coverity.com/projects/jamesodhunt-utfout/badge.svg
+   :target: https://scan.coverity.com/projects/jamesodhunt-utfout
    :alt: Coverity Scan Build Status
 
 .. image:: https://img.shields.io/badge/license-GPL-3.0.svg
