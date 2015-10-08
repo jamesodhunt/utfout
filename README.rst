@@ -1,11 +1,11 @@
+.. image:: https://img.shields.io/badge/license-GPL-3.0.svg
+
 .. image:: https://travis-ci.org/jamesodhunt/utfout.svg?branch=master
    :target: https://travis-ci.org/jamesodhunt/utfout
 
 .. image:: https://scan.coverity.com/projects/jamesodhunt-utfout/badge.svg
    :target: https://scan.coverity.com/projects/jamesodhunt-utfout
    :alt: Coverity Scan Build Status
-
-.. image:: https://img.shields.io/badge/license-GPL-3.0.svg
 
 .. image:: https://img.shields.io/badge/donate-flattr-red.svg
    :alt: Donate via flattr
